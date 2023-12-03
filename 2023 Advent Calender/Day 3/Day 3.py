@@ -1,3 +1,4 @@
+from utils.decorators import time_it
 
 Day_3 = ""
 
@@ -16,3 +17,4 @@ data = file_to_list()
 
 
 print(data)
+
