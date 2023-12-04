@@ -104,3 +104,67 @@ print("Part 1 =", sum_num)
 
 
 # Part 2 is probably not solvable using this strategy. I think Ima have to completely rewrite it.
+# So far none of this is working, but I think I am onto something.
+# Ima have to figure out how to actually incorporate it.
+
+star_coords = []
+
+
+class star:
+
+    def __init__(self, line):
+        self.line = line
+        self.top_line = []
+        self.mid_line = []
+        self.bot_line = []
+
+
+    def get_hot_spots(self):
+        self.line = self.line.split()
+        self.x = int(self.line[0])
+        self.y = int(self.line[-1])
+
+        self.top_line.append(f"{self.x-1} {self.y-1}")
+        self.top_line.append(f"{self.x} {self.y-1}")
+        self.top_line.append(f"{self.x+1} {self.y-1}")
+
+        self.mid_line.append(f"{self.x-1} {self.y}")
+        self.mid_line.append(f"{self.x+1} {self.y}")
+
+        self.bot_line.append(f"{self.x-1} {self.y+1}")
+        self.bot_line.append(f"{self.x} {self.y+1}")
+        self.bot_line.append(f"{self.x+1} {self.y+1}")
+        
+
+line_count = 0
+
+
+for line in data:
+    line_count += 1
+    for i, char in enumerate(line):
+        if char == "*":
+            star_coords.append(f"{i} {line_count}")
+
+
+for coord in star_coords:
+    coord = star(coord)
+    coord.get_hot_spots()
+
+
+line_count = 0
+print(star_coords)
+print("94 127".top_line)
+
+
+for line in data:
+    line_count += 1
+    one_ago = ""
+    two_ago = ""
+    
+    for coord in star_coords:
+
+        for i, char in enumerate(line):
+
+            if f"{i} {line_count}" in coord.top_line:
+                print("yur mum")
+                print(char)
