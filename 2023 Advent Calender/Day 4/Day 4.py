@@ -1,5 +1,5 @@
 
-Day_4 = ""
+Day_4 = "Scratchcards"
 
 card_values = []
 
