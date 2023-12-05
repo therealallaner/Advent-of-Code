@@ -9,6 +9,8 @@ temperature = False
 humidity = False
 location = False
 
+maps = []
+
 s_line = []
 f_line = []
 w_line = []
@@ -50,11 +52,11 @@ def find_seeds(data):
         return seeds
 
 
-def soil_map(seeds):
+def map(seeds, line):
     inputs = []
     return_seeds = []
 
-    for i in s_line:
+    for i in line:
         i = i.split()
         d = int(i[0])
         s = int(i[1])
@@ -74,151 +76,7 @@ def soil_map(seeds):
         if x not in inputs:
             return_seeds.append(x)
 
-    fert_map(return_seeds)
-
-def fert_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in f_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    water_map(return_seeds)
-
-def water_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in w_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    light_map(return_seeds)
-
-def light_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in l_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    temp_map(return_seeds)
-
-def temp_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in t_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    humid_map(return_seeds)
-
-def humid_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in h_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    local_map(return_seeds)
-
-def local_map(seeds):
-    inputs = []
-    return_seeds = []
-    for i in loc_line:
-        i = i.split()
-        d = int(i[0])
-        s = int(i[1])
-        r = int(i[-1])
-
-        for x in seeds:
-            x = int(x)
-            if x >= s:
-                if x <= s+r:
-                    if x not in inputs:
-                        return_seeds.append(x+(d-s))
-                        inputs.append(x)
-
-    for x in seeds:
-        x = int(x)
-        if x not in inputs:
-            return_seeds.append(x)
-
-    print("Part 1 =",min(return_seeds))
+    return return_seeds
 
 
 for i, line in enumerate(data):
@@ -262,9 +120,19 @@ for i, line in enumerate(data):
         loc_line.append(line)
 
 
-seeds = find_seeds(data)
-soil_map(seeds)
+maps.append(s_line)
+maps.append(f_line)
+maps.append(w_line)
+maps.append(l_line)
+maps.append(t_line)
+maps.append(h_line)
+maps.append(loc_line)
 
+seeds = find_seeds(data)
+for m in maps:
+    seeds = map(seeds, m)
+
+print("Part 1 =",min(seeds))
 
 # Part 2
 
