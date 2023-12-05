@@ -218,7 +218,7 @@ def local_map(seeds):
         if x not in inputs:
             return_seeds.append(x)
 
-    print(min(return_seeds))
+    print("Part 1 =",min(return_seeds))
 
 
 for i, line in enumerate(data):
@@ -264,3 +264,9 @@ for i, line in enumerate(data):
 
 seeds = find_seeds(data)
 soil_map(seeds)
+
+
+# Part 2
+
+# For part two i need to calculate the ranges of the seeds rather than all the numbers being seeds.
+
