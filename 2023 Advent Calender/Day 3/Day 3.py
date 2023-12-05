@@ -107,9 +107,9 @@ star_products = []
 
 
 def find_hotspots(x):
+    hot_spots = []
     y = 1
 
-    hot_spots = []
     hot_spots.append(f"{x-1} {y}")
     hot_spots.append(f"{x-1} {y-1}")
     hot_spots.append(f"{x} {y-1}")
