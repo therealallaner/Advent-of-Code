@@ -73,7 +73,7 @@ def find_better_times(data):
             time -= 1
         
         for i in p:
-            if i > int(records[item]):
+            if i > distance:
                 b.append(i)
 
         better_times.append(len(b))
@@ -98,3 +98,67 @@ product = products(data)
 print("Part 1 =", product)
 
 
+# Part 2
+# For Part 2 I may need to make it way more efficient since the number is so large!
+
+
+def get_times2(data):
+    times = []
+    for line in data:
+        line = line.split()
+
+        for item in line:
+            if item.isnumeric():
+                if int(item) > 100:
+                    times.append(item)
+
+        return times
+    
+
+def get_distances2(data):
+    distances = []
+
+    for l, line in enumerate(data):
+        if l == 1:
+            line = line.split()
+
+            for item in line:
+                if item.isnumeric():
+                    if int(item) > 10000:
+                        distances.append(item)
+
+    return distances
+
+def time_dist(data):
+    time = get_times2(data)
+    dist = get_distances2(data)
+    records = {}
+
+    for i, item in enumerate(time):
+        records[item] = dist[i]
+
+    return records
+
+
+def find_better_times2(data):
+    records = time_dist(data)
+    p = 0
+
+    for item in records:
+        time = int(item)/2 + .5
+        t = int(item)
+        distance = int(records[item])
+
+        while ((t-time)*time) > distance:
+            p += 1
+            time += 1
+
+
+        time = int(item)/2 - .5
+        while ((t-time)*time) > distance:
+            p += 1
+            time -= 1
+
+    return p
+
+print("Part 2 =", find_better_times2(data))
