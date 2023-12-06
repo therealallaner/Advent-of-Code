@@ -62,22 +62,17 @@ def find_better_times(data):
     better_times = []
 
     for item in records:
-        p = []
-        b = []
+        p = 0
         time = int(item)
         t = int(item)
         distance = int(records[item])
 
         while time > 0:
-            p.append((t-time)*time)
+            if (t-time)*time > distance:
+                p += 1
             time -= 1
-        
-        for i in p:
-            if i > distance:
-                b.append(i)
 
-        better_times.append(len(b))
-
+        better_times.append(p)
 
     return better_times
 
@@ -154,11 +149,6 @@ def find_better_times2(data):
             time += 1
 
 
-        time = int(item)/2 - .5
-        while ((t-time)*time) > distance:
-            p += 1
-            time -= 1
-
-    return p
+    return p*2
 
 print("Part 2 =", find_better_times2(data))
