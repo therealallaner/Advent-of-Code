@@ -65,251 +65,71 @@ for hand in data:
         five_kind.append(hand)
 
 
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(high_card):
-        if hand != high_card[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(high_card[h+1][0][0]):
-                high_card[h], high_card[h+1] = high_card[h+1], high_card[h]
-                swaps = True
 
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(high_card[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(high_card[h+1][0][1]):
-                    high_card[h], high_card[h+1] = high_card[h+1], high_card[h]
+def hand_sorting_algorithm(hand_list):
+    swaps = True
+    while swaps:
+        swaps = False
+
+        for h, hand in enumerate(hand_list):
+            if hand != hand_list[-1]:
+                if card_ranks.index(hand[0][0]) > card_ranks.index(hand_list[h+1][0][0]):
+                    hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
                     swaps = True
 
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(high_card[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(high_card[h+1][0][2]):
-                        high_card[h], high_card[h+1] = high_card[h+1], high_card[h]
+                elif card_ranks.index(hand[0][0]) == card_ranks.index(hand_list[h+1][0][0]):
+                    if card_ranks.index(hand[0][1]) > card_ranks.index(hand_list[h+1][0][1]):
+                        hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
                         swaps = True
 
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(high_card[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(high_card[h+1][0][3]):
-                            high_card[h], high_card[h+1] = high_card[h+1], high_card[h]
+                    elif card_ranks.index(hand[0][1]) == card_ranks.index(hand_list[h+1][0][1]):
+                        if card_ranks.index(hand[0][2]) > card_ranks.index(hand_list[h+1][0][2]):
+                            hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
                             swaps = True
 
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(high_card[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(high_card[h+1][0][4]):
-                                high_card[h], high_card[h+1] = high_card[h+1], high_card[h]
+                        elif card_ranks.index(hand[0][2]) == card_ranks.index(hand_list[h+1][0][2]):
+                            if card_ranks.index(hand[0][3]) > card_ranks.index(hand_list[h+1][0][3]):
+                                hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
                                 swaps = True
 
-print("High Cards done")
+                            elif card_ranks.index(hand[0][3]) == card_ranks.index(hand_list[h+1][0][3]):
+                                if card_ranks.index(hand[0][4]) > card_ranks.index(hand_list[h+1][0][4]):
+                                    hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
+                                    swaps = True
 
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(one_pair):
-        if hand != one_pair[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(one_pair[h+1][0][0]):
-                one_pair[h], one_pair[h+1] = one_pair[h+1], one_pair[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(one_pair[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(one_pair[h+1][0][1]):
-                    one_pair[h], one_pair[h+1] = one_pair[h+1], one_pair[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(one_pair[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(one_pair[h+1][0][2]):
-                        one_pair[h], one_pair[h+1] = one_pair[h+1], one_pair[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(one_pair[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(one_pair[h+1][0][3]):
-                            one_pair[h], one_pair[h+1] = one_pair[h+1], one_pair[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(one_pair[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(one_pair[h+1][0][4]):
-                                one_pair[h], one_pair[h+1] = one_pair[h+1], one_pair[h]
-                                swaps = True
-
-print("Single Pairs done")
-
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(two_pair):
-        if hand != two_pair[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(two_pair[h+1][0][0]):
-                two_pair[h], two_pair[h+1] = two_pair[h+1], two_pair[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(two_pair[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(two_pair[h+1][0][1]):
-                    two_pair[h], two_pair[h+1] = two_pair[h+1], two_pair[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(two_pair[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(two_pair[h+1][0][2]):
-                        two_pair[h], two_pair[h+1] = two_pair[h+1], two_pair[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(two_pair[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(two_pair[h+1][0][3]):
-                            two_pair[h], two_pair[h+1] = two_pair[h+1], two_pair[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(two_pair[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(two_pair[h+1][0][4]):
-                                two_pair[h], two_pair[h+1] = two_pair[h+1], two_pair[h]
-                                swaps = True
-
-print("Two Pairs done")
-
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(three_kind):
-        if hand != three_kind[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(three_kind[h+1][0][0]):
-                three_kind[h], three_kind[h+1] = three_kind[h+1], three_kind[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(three_kind[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(three_kind[h+1][0][1]):
-                    three_kind[h], three_kind[h+1] = three_kind[h+1], three_kind[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(three_kind[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(three_kind[h+1][0][2]):
-                        three_kind[h], three_kind[h+1] = three_kind[h+1], three_kind[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(three_kind[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(three_kind[h+1][0][3]):
-                            three_kind[h], three_kind[h+1] = three_kind[h+1], three_kind[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(three_kind[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(three_kind[h+1][0][4]):
-                                three_kind[h], three_kind[h+1] = three_kind[h+1], three_kind[h]
-                                swaps = True
+    return hand_list
 
 
-print("Three of a kind done")
 
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(full_house):
-        if hand != full_house[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(full_house[h+1][0][0]):
-                full_house[h], full_house[h+1] = full_house[h+1], full_house[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(full_house[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(full_house[h+1][0][1]):
-                    full_house[h], full_house[h+1] = full_house[h+1], full_house[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(full_house[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(full_house[h+1][0][2]):
-                        full_house[h], full_house[h+1] = full_house[h+1], full_house[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(full_house[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(full_house[h+1][0][3]):
-                            full_house[h], full_house[h+1] = full_house[h+1], full_house[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(full_house[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(full_house[h+1][0][4]):
-                                full_house[h], full_house[h+1] = full_house[h+1], full_house[h]
-                                swaps = True
-
-
-print("Full House done")
-
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(four_kind):
-        if hand != four_kind[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(four_kind[h+1][0][0]):
-                four_kind[h], four_kind[h+1] = four_kind[h+1], four_kind[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(four_kind[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(four_kind[h+1][0][1]):
-                    four_kind[h], four_kind[h+1] = four_kind[h+1], four_kind[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(four_kind[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(four_kind[h+1][0][2]):
-                        four_kind[h], four_kind[h+1] = four_kind[h+1], four_kind[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(four_kind[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(four_kind[h+1][0][3]):
-                            four_kind[h], four_kind[h+1] = four_kind[h+1], four_kind[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(four_kind[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(four_kind[h+1][0][4]):
-                                four_kind[h], four_kind[h+1] = four_kind[h+1], four_kind[h]
-                                swaps = True
-
-print("Four of a kind done")
-
-swaps = True
-while swaps:
-    swaps = False
-    for h, hand in enumerate(five_kind):
-        if hand != five_kind[-1]:
-            if card_ranks.index(hand[0][0]) > card_ranks.index(five_kind[h+1][0][0]):
-                five_kind[h], five_kind[h+1] = five_kind[h+1], five_kind[h]
-                swaps = True
-
-            elif card_ranks.index(hand[0][0]) == card_ranks.index(five_kind[h+1][0][0]):
-                if card_ranks.index(hand[0][1]) > card_ranks.index(five_kind[h+1][0][1]):
-                    five_kind[h], five_kind[h+1] = five_kind[h+1], five_kind[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][1]) == card_ranks.index(five_kind[h+1][0][1]):
-                    if card_ranks.index(hand[0][2]) > card_ranks.index(five_kind[h+1][0][2]):
-                        five_kind[h], five_kind[h+1] = five_kind[h+1], five_kind[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][2]) == card_ranks.index(five_kind[h+1][0][2]):
-                        if card_ranks.index(hand[0][3]) > card_ranks.index(five_kind[h+1][0][3]):
-                            five_kind[h], five_kind[h+1] = five_kind[h+1], five_kind[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][3]) == card_ranks.index(five_kind[h+1][0][3]):
-                            if card_ranks.index(hand[0][4]) > card_ranks.index(five_kind[h+1][0][4]):
-                                five_kind[h], five_kind[h+1] = five_kind[h+1], five_kind[h]
-                                swaps = True
 
 answer = 0
 rank = 1
 
-for i in high_card:
+for i in hand_sorting_algorithm(high_card):
     answer += rank * int(i[1])
     rank += 1
 
-for i in one_pair:
+for i in hand_sorting_algorithm(one_pair):
     answer += rank * int(i[1])
     rank += 1
 
-for i in two_pair:
+for i in hand_sorting_algorithm(two_pair):
     answer += rank * int(i[1])
     rank += 1
     
-for i in three_kind:
+for i in hand_sorting_algorithm(three_kind):
     answer += rank * int(i[1])
     rank += 1
     
-for i in full_house:
+for i in hand_sorting_algorithm(full_house):
     answer += rank * int(i[1])
     rank += 1
     
-for i in four_kind:
+for i in hand_sorting_algorithm(four_kind):
     answer += rank * int(i[1])
     rank += 1
     
-for i in five_kind:
+for i in hand_sorting_algorithm(five_kind):
     answer += rank * int(i[1])
     rank += 1
 
@@ -379,42 +199,6 @@ for hand in data:
 
     elif len(matches) == 1:
         five_kind.append(hand)
-
-
-def hand_sorting_algorithm(hand_list):
-    swaps = True
-    while swaps:
-        swaps = False
-
-        for h, hand in enumerate(hand_list):
-            if hand != hand_list[-1]:
-                if card_ranks.index(hand[0][0]) > card_ranks.index(hand_list[h+1][0][0]):
-                    hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
-                    swaps = True
-
-                elif card_ranks.index(hand[0][0]) == card_ranks.index(hand_list[h+1][0][0]):
-                    if card_ranks.index(hand[0][1]) > card_ranks.index(hand_list[h+1][0][1]):
-                        hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
-                        swaps = True
-
-                    elif card_ranks.index(hand[0][1]) == card_ranks.index(hand_list[h+1][0][1]):
-                        if card_ranks.index(hand[0][2]) > card_ranks.index(hand_list[h+1][0][2]):
-                            hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
-                            swaps = True
-
-                        elif card_ranks.index(hand[0][2]) == card_ranks.index(hand_list[h+1][0][2]):
-                            if card_ranks.index(hand[0][3]) > card_ranks.index(hand_list[h+1][0][3]):
-                                hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
-                                swaps = True
-
-                            elif card_ranks.index(hand[0][3]) == card_ranks.index(hand_list[h+1][0][3]):
-                                if card_ranks.index(hand[0][4]) > card_ranks.index(hand_list[h+1][0][4]):
-                                    hand_list[h], hand_list[h+1] = hand_list[h+1], hand_list[h]
-                                    swaps = True
-
-    return hand_list
-
-
 
 
 answer = 0
