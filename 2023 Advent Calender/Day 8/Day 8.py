@@ -1,3 +1,4 @@
+from math import lcm
 
 Day_8 = ""
 
@@ -44,18 +45,44 @@ while current_pos != "zzz":
                     if current_pos == "zzz":
                         break
                     turn_counter += 1
-print(turn_counter + 1)
+print("Part 1 =", turn_counter + 1)
 
 
 # Part 2
 
 ghost_pos = []
-turn_counter = 0
+ghost_distances = []
 
 for line in data:
     line = line.split()
     if "a" == line[0][2]:
         ghost_pos.append(line[0])
 
-print(ghost_pos)
+
+for ghost in ghost_pos:
+    current_pos = ghost
+    cycle = True
+    turn_counter = 0
+    while cycle:
+
+        for line in data:
+            line = line.split()
+            if current_pos in line[0]:
+                if lr[turn_counter] == "l":
+                    current_pos = line[2]
+                    turn_counter += 1
+                    if "z" in current_pos:
+                        ghost_distances.append(turn_counter)
+                        cycle = False
+                else:
+                    current_pos = line[3]
+                    turn_counter += 1
+                    if "z" in current_pos:
+                        ghost_distances.append(turn_counter)
+                        cycle = False
+
+
+
+print("Part 2 =", lcm(*ghost_distances))
+
 
