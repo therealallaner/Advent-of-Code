@@ -1,6 +1,6 @@
 from math import lcm
 
-Day_8 = ""
+Day_8 = "Haunted Wasteland"
 
 current_pos = "aaa"
 turn_counter = 0
