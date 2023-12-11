@@ -1,9 +1,12 @@
+from utils import time_it
+
 
 Day_9 = "Mirage Maintenance"
 
 values = []
 values2 = []
 
+@time_it
 def file_to_list():
     return_list = []
     data = open("./2023 Advent Calender/Day 9/data.txt")
