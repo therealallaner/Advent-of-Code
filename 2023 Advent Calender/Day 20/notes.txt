@@ -1,0 +1,35 @@
+
+Flip flop modules are noted with a % prefix
+    Rules:
+        init off
+
+        receives a high pulse
+            pass
+
+        receives a low pulse
+            turn on
+            output = high pulse
+
+Conjunction modules are noted with an & prefix
+    Rules:
+        "remembers" the the pulses received by each of their connected modules
+
+        init memory is low
+
+        if all memories are high
+            output = low pulse
+        else
+            output = high pulse
+    
+
+broadcaster module
+    Rules:
+        sends whatever pulse it receives to all it's destination modules
+
+Button module
+    Rules:
+        when pushed, sends low pulse to broadcaster
+
+
+Rules:
+    Pulses process in the order they are sent
