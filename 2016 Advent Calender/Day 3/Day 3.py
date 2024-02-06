@@ -35,7 +35,7 @@ for l in data:
 print(f"The answer to Part 1 is: {possibleTriangles}")
 
 
-Part_2 = "Columns not Rows..."
+#   Part 2
 
 possibleTriangles2 = 0
 
