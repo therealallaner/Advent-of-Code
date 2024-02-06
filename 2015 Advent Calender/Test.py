@@ -1,3 +1,9 @@
+from utils.decorators import Dynamically_Nested_Lists, Data_to_List, Dynamic_Dictionaries
+
+
+testDictionary = {}
+anotherTest = {}
+
 test_num = 0
 
 def find_divisors(number):
@@ -17,3 +23,12 @@ for num in result:
     test_num += num * 10
 
 print(test_num)
+
+for i in range(12):
+    x = i+1
+    Dynamically_Nested_Lists(testDictionary,'elephant',x)
+    Dynamic_Dictionaries(anotherTest,'gun',x)
+
+
+for i in anotherTest:
+    print(i, anotherTest[i])
