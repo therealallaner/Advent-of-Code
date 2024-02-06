@@ -1,4 +1,5 @@
-from utils.decorators import time_it, Data_to_List, Dynamically_Nested_Lists
+from utils.decorators import time_it
+from utils.mymethods import Data_to_List, Dynamic_Dictionaries, Dynamically_Nested_Lists
 from collections import Counter
 
 Day_6 = "Signals and Noise"

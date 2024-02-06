@@ -1,4 +1,4 @@
-from utils.decorators import Dynamically_Nested_Lists, Data_to_List, Dynamic_Dictionaries
+from utils.mymethods import Dynamically_Nested_Lists, Data_to_List, Dynamic_Dictionaries
 
 
 testDictionary = {}
