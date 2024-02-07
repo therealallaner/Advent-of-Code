@@ -10,15 +10,19 @@ def Data_to_List(y,d,t):
     return return_list
 
 def Dynamically_Nested_Lists(d,s,n):
-    dictNum = f"{s}{n}"
+    listNum = f"{s}{n}"
     nestedList = []
-    d[dictNum] = nestedList
+    d[listNum] = nestedList
 
-    return d[dictNum]
+    return d[listNum]
 
-def Dynamic_Dictionaries(d,s,n):
+def Dynamic_Dictionaries(d,s,n):# I think these are basically redundant and it's really the dynamic keys I was wanting
     dictNum = f"{s}{n}"
     dictionary = {}
     d[dictNum] = dictionary
 
     return d[dictNum]
+
+def Dynamic_Keys(s,n):
+    dictNum = f"{s}{n}"
+    return dictNum
