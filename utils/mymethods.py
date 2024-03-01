@@ -30,6 +30,19 @@ def Dynamic_Dictionaries(d,s,n):# I think these are basically redundant and it's
 
     return d[dictNum]
 
+
 def Dynamic_Keys(s,n):
     dictNum = f"{s}{n}"
     return dictNum
+
+
+def Partition_Func(n,k,l=1):
+    if k < 1:
+        return
+    if k ==1:
+        if n >= 1:
+            yield(n,)
+        return
+    for i in range(l,n+1):
+        for result in Partition_Func(n-i,k-1,i):
+            yield (i,) + result
