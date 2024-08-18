@@ -1,0 +1,15 @@
+       
+       
+       
+       I think I can do this with an ai approach
+
+       I am thinking of doing something along the lines of
+
+       1 - creating a "population" of ai to try to carry the chips and gens up and down floors
+       2 - adding a form of "time" to the sim to allow for "reproduction"
+       3 - reproduction will work like this
+           a - as they accomplish the tasks i want, they will gain points
+           b - as they do tasks i dont want, they will lose points
+           c - only the top certain percent will "reproduce" and transfer their steps to future "generations"
+           d - each offspring will have a chance to mutate and change something about the steps they got from their parent
+           e - rinse and repeat however many times it takes to get the task done i want
