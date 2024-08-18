@@ -15,7 +15,7 @@ yLineBot = []
 
 
 
-def WallorNah(x,y):
+def WallorNah(x,y,s,beenThere):
     b = 0
 
     q = (x*x) + (3*x) + (2*x*y) + (y) + (y*y)
@@ -40,11 +40,9 @@ def WallorNah(x,y):
         if x == 31:
             if y == 39:
                 return "O"
-        
-
-    if x == 13:
-        if y == 20:
-            return "W"    
+     
+    if (x,y) in beenThere:
+        return "X"
 
     if (b%2) == 0:
         #print(b)
@@ -54,7 +52,8 @@ def WallorNah(x,y):
     
 
 @time_it
-def GenMaze(d):
+def GenMaze(d,s,beenThere):
+    b = beenThere
     data = d
     for l in range(60):
         xStringBot = ''
@@ -64,8 +63,8 @@ def GenMaze(d):
             xStringRender = f' {l} '
 
         for i in range(60):
-            xStringRender += WallorNah(i,l)
-            xStringBot += WallorNah(i,l)
+            xStringRender += WallorNah(i,l,s,b)
+            xStringBot += WallorNah(i,l,s,b)
             xStringRender += ' '
 
         yLineRender.append(xStringRender)
@@ -334,8 +333,8 @@ def BreadthFirstSearch(maze,t,p,steps):
 @time_it
 def Part1():
     active = True
-    maze = GenMaze(data)
     beenThere = [(0,0)]
+    maze = GenMaze(data,False,beenThere)
     botPos = (1,1)
     target = 7,4
     #while active:
@@ -361,4 +360,124 @@ def Part1():
 #    for l in beenThere:
 #        print(l)
 
-Part1()
+
+
+def BreadthFirstSearch2(maze,p,steps,beenThere):
+
+
+    validSpots = [
+        '.',
+        'T',
+        'O',
+        'W'
+    ]
+
+    newBots = []
+    currentPos = p
+    x = currentPos[0]
+    y = currentPos[1]
+
+
+    up = x,y-1
+    left = x-1,y
+    down = x,y+1
+    right = x+1,y
+
+
+    # This puts borders around the maze
+    if y != 0:
+        mazeUp = maze[y-1][x]
+    else:
+        mazeUp = "#"
+
+    if x != 0:
+        mazeLeft = maze[y][x-1]
+    else: 
+        mazeLeft = "#"
+
+    if y != 59:
+        mazeDown = maze[y+1][x]
+    else: 
+        mazeDown = "#"
+
+    if x != 59:
+        mazeRight = maze[y][x+1]
+    else:
+        mazeRight = "#"
+
+
+
+    if currentPos not in beenThere:
+        beenThere.append(currentPos)
+
+
+    if len(steps) <= 50:
+
+        # Checks for Valid Moves
+        if mazeUp in validSpots:
+            if up not in steps:
+                stepsUp = []
+                for s in steps:
+                    stepsUp.append(s)
+                stepsUp.append(up)
+                newBots.append(up)
+
+
+        if mazeLeft in validSpots:
+            if left not in steps:
+                stepsLeft = []
+                for s in steps:
+                    stepsLeft.append(s)
+                stepsLeft.append(left)
+                newBots.append(left)
+    
+
+        if mazeDown in validSpots:
+            if down not in steps:
+                stepsDown = []
+                for s in steps:
+                    stepsDown.append(s)
+                stepsDown.append(down)
+                newBots.append(down)
+                
+        if mazeRight in validSpots:
+            if right not in steps:
+                stepsRight = []
+                for s in steps:
+                    stepsRight.append(s)
+                stepsRight.append(right)
+                newBots.append(right)
+
+    else:
+        print("")
+        print("")
+        #GenMaze(data,True,beenThere)
+        print(len(beenThere))
+        return
+
+
+    for l in newBots:
+        if l == up:
+            BreadthFirstSearch2(maze,l,stepsUp,beenThere)
+        if l == left:
+            BreadthFirstSearch2(maze,l,stepsLeft,beenThere)
+        if l == down:
+            BreadthFirstSearch2(maze,l,stepsDown,beenThere)
+        if l == right:
+            BreadthFirstSearch2(maze,l,stepsRight,beenThere)
+
+
+@ time_it
+def Part2():
+    beenThere = []
+    maze = GenMaze(data,False,beenThere)
+    botPos = (1,1)
+    steps = [(1,1)]
+
+    BreadthFirstSearch2(maze,botPos,steps,beenThere)
+
+
+
+#Part1()
+Part2()
+#GenMaze(data)
