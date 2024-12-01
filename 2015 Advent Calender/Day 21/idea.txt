@@ -1,0 +1,14 @@
+
+This is actually kinda fun trying to do this manually.
+I can see a game here of some kind.
+
+    You start out with simple items... Dagger, Leather, no jewelry and you have to fight things by choosing your loadout before the fight.
+first fight is fairly easy, not really any options. but you get rewarded for using less inventory space in the fight.
+
+    For example, you have a dagger and leather armor, but can win without the leather armor. If you choose to use the armor, 
+you will still get the fight'S rewards (xp, base gold, items, etc) but for every skill cost below the 'average cost' you will gain extra
+skill points.
+
+    I would need to make it enjoyable, but not overly complicated for the average player to play through while still being
+a little challenging. But hide certain rewards, or restrict certain items and abilities to efficiency levels, that will allow
+hardcore players who want to study and optimize their loadouts to have something to grind for.

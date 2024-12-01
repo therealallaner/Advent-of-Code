@@ -6,7 +6,7 @@ Day_5 = "How About a Nice Game of Chess?"
 
 
 data = "abbhdwsy"
-fun = "purpleelephant"
+fun = "funpassword"
 password = ""
 
 

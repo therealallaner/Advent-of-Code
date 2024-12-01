@@ -328,6 +328,9 @@ def BreadthFirstSearch(maze,t,p,steps):
             BreadthFirstSearch(maze,t,l,stepsDown)
         if l == right:
             BreadthFirstSearch(maze,t,l,stepsRight)
+
+
+            
         
 
 @time_it
